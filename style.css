@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #240b42;
+    --secondary-color: #263238;
+    --accent-color: #b08111;
+    --background-color: #e9eef3;
+    --card-background: #ffffff;
+    --text-color: #212121;
+    --light-text-color: #616161;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.7;
+    background-image: url('img/cineplus.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header,
+main,
+footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: rgb(239, 233, 233);
+    padding: 40px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,56.5c0,0,298.6,0,400,0s300.5,73.5,600.5,73.5s400-56.5,400-56.5V0H0Z" fill="white"/></svg>') repeat-x bottom;
+    opacity: 0.3;
+}
+
+.buttonsChoice {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+button,
+a button {
+    font-size: 1.2em;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    min-width: 160px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: inherit;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-5px);
+    background-color: darken(var(--accent-color), 10%);
+}
+
+button:focus,
+a button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.4);
+}
+
+.buttonsChoice button.active {
+    background-color: darken(var(--accent-color), 20%);
+    color: white;
+}
+
+input[type="range"],
+select {
+    margin: 20px 0;
+    padding: 12px;
+    border-radius: 30px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    font-size: 1.1em;
+}
+
+input[type="range"] {
+    width: 350px;
+}
+
+select {
+    width: 370px;
+}
+
+select#FiltrePays {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: var(--text-color);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='currentColor'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 35px;
+}
+
+select#FiltrePays option:first-child {
+    color: red;
+}
+
+select#FiltrePays::-ms-expand {
+    display: none;
+}
+
+select#FiltrePays option[value="France"],
+select#FiltrePays option[value="Angleterre"],
+select#FiltrePays option[value="Belgique"],
+select#FiltrePays option[value="Pays-Bas"] {
+    color: #007bff;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    padding: 40px;
+}
+
+.movie-card {
+    background-color: var(--card-background);
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    aspect-ratio: 2 / 3;
+    border-bottom: 1px solid #eee;
+}
+
+.movie-card .content {
+    padding: 30px;
+}
+
+.movie-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.movie-card p {
+    font-size: 1.15em;
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+}
+
+.movie-card strong {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.movie-card .rating {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.star {
+    color: gold;
+    font-size: 1.2em;
+}
+
+.delete-button {
+    background-color: #b71c1c;
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.1em;
+}
+
+.delete-button:hover {
+    background-color: darken(#b71c1c, 15%);
+    transform: translateY(-3px);
+    color: white;
+}
+
+.delete-button:active {
+    background-color: #b71c1c;
+    color: white;
+}
+
+.movie-card_banger {
+    border: 3px solid gold;
+    background-color: #fff8e1;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+.movie-card_banger h2 {
+    color: #ff9800;
+}
+
+.movie-card_banger .movie-details {
+    background-color: #fff3e0;
+}
+
+.movie-card_navet_border {
+    border: 5px solid purple;
+}
+
+form#addFilmForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+form#addFilmForm div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 600px;
+}
+
+form#addFilmForm label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-align: left;
+    width: 100%;
+}
+
+form#addFilmForm input,
+form#addFilmForm textarea {
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.1em;
+}
+
+form#addFilmForm textarea {
+    height: 180px;
+}
+
+form#addFilmForm input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-size: 1.2em;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+form#addFilmForm input[type="submit"]:hover {
+    transform: translateY(-5px);
+    background-color: darken(var(--primary-color), 15%);
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background-color: var(--secondary-color);
+    color: white;
+    margin-top: 50px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    color: var(--light-text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--text-color);
+}
+
+.modal h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#edit-film-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#edit-film-form label {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+#edit-film-form input,
+#edit-film-form textarea,
+#edit-film-form select {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    font-size: 1em;
+    color: var(--text-color);
+}
+
+#edit-film-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+#edit-film-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='currentColor'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 35px;
+}
+
+#edit-film-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+#edit-film-form button[type="submit"]:hover {
+    background-color: darken(var(--primary-color), 10%);
+    transform: translateY(-3px);
+}
+
+#edit-film-form button[type="submit"]:active {
+    background-color: var(--primary-color);
+    transform: translateY(0);
+}

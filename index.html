@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Le Coin du Cinéma</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>📽️ CinéScope: Où chaque film est une fenêtre sur un nouveau monde</h1>
+        <nav class="buttonsChoice">
+            <button id="loadMoviesButton" aria-label="Charger les films">Voir Films</button>
+            <button id="importBanger" aria-label="Importer les films excellents">Importer les classiques</button>
+            <button id="importNavets" aria-label="Importer les films médiocres">Importer les navets</button>
+            <button id="clearButton" aria-label="Effacer le contenu">Clear</button>
+            <a href="addFilm.html"><button aria-label="Ajouter un nouveau film">Ajouter un Film</button></a>
+        </nav>
+    </header>
+
+    <main>
+        <p>Choisissez une note pour classer les films entre excellents et navets de 1 à 5</p>
+
+        <div>
+            <input type="range" id="goodNote" name="goodNote" min="0" max="5" value="4"
+                aria-label="Note pour les films excellents" />
+            <label for="goodNote">Excellents</label>
+        </div>
+
+        <div>
+            <input type="range" id="badNote" name="badNote" min="0" max="5" value="2"
+                aria-label="Note pour les films médiocres" />
+            <label for="badNote">Navets</label>
+        </div>
+
+        <!-- Nouveaux filtres -->
+        <div>
+            <label for="FiltreNiveau">Niveau :</label>
+            <select id="FiltreNiveau" aria-label="Filtrer par niveau">
+                <option value="">Tous</option>
+                <option value="Classic">Classic</option>
+                <option value="Standard">Standard</option>
+                <option value="Navet">Navet</option>
+            </select>
+
+            <label for="noteMin">Note minimale :</label>
+            <input type="number" id="noteMin" placeholder="Note minimale" min="0" max="5" step="0.1">
+
+            <label for="noteMax">Note maximale :</label>
+            <input type="number" id="noteMax" placeholder="Note maximale" min="0" max="5" step="0.1">
+
+            <button id="appliquerFiltres">Appliquer les filtres</button>
+        </div>
+
+        <select id="FiltrePays" aria-label="Filtrer par pays d'origine">
+            <option value="" disabled selected>Origine du film</option>
+            <option value="TOUS">TOUS</option>
+            <option value="France">France</option>
+            <option value="Angleterre">Angleterre</option>
+            <option value="Belgique">Belgique</option>
+            <option value="Pays-Bas">Pays-Bas</option>
+        </select>
+
+        <div id="movies-container" class="movies-grid"></div>
+
+        <!-- Modale pour la modification du film -->
+        <div id="edit-film-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Modifier un film</h2>
+                <form id="edit-film-form">
+                    <label for="edit-nom">Nom du film :</label>
+                    <input type="text" id="edit-nom" required>
+
+                    <label for="edit-dateDeSortie">Année De Sortie :</label>
+                    <input type="text" id="edit-dateDeSortie" pattern="\d{4}"
+                        title="Veuillez entrer une année valide (ex: 1960)" required>
+
+                    <label for="edit-realisateur">Réalisateur :</label>
+                    <input type="text" id="edit-realisateur" required>
+
+                    <label for="edit-note">Note de la critique :</label>
+                    <input type="number" id="edit-note" min="0" max="5" step="0.1" required>
+
+                    <label for="edit-notePublic">Note du public :</label>
+                    <input type="number" id="edit-notePublic" min="0" max="5" step="0.1" required>
+
+                    <label for="edit-compagnie">Compagnie :</label>
+                    <input type="text" id="edit-compagnie" required>
+
+                    <label for="edit-description">Description :</label>
+                    <textarea id="edit-description" required></textarea>
+
+                    <label for="edit-origine">Origine :</label>
+                    <select id="edit-origine">
+                        <option value="France">France</option>
+                        <option value="Angleterre">Angleterre</option>
+                        <option value="Belgique">Belgique</option>
+                        <option value="Pays-Bas">Pays-Bas</option>
+                    </select>
+
+                    <label for="edit-lienImage">Lien de l'image :</label>
+                    <input type="text" id="edit-lienImage">
+
+                    <button type="submit">Enregistrer les modifications</button>
+                </form>
+            </div>
+        </div>
+
+
+        <template id="movie-template">
+            <div class="movie-card" data-id="{{id}}">
+                <h2 class="nom" style="text-align: center;"></h2>
+                <img class="lienImage" src="" alt="Affiche du film">
+                <div class="content">
+                    <div class="movie-details">
+                        <p><strong>Année De Sortie:</strong> <span class="dateDeSortie"></span></p>
+                        <p><strong>Réalisateur :</strong> <span class="realisateur"></span></p>
+                        <p><strong>Note de la critique : </strong> <span class="note"></span></p>
+                        <p><strong>Note du public : </strong> <span class="notePublic"></span></p>
+                        <p><strong>Différence : </strong> <span class="noteDifference"></span></p>
+                        <p><strong>Compagnie :</strong> <span class="compagnie"></span></p>
+                        <p><strong>Description : </strong> <span class="description"></span></p>
+                    </div>
+                    <button class="delete-button" aria-label="Supprimer le film">Supprimer</button>
+                    <button class="edit-button" aria-label="Modifier le film">Modifier</button>
+                </div>
+            </div>
+        </template>
+
+        <!-- Template pour les chefs-d'œuvre (note ≥ 4.2) -->
+        <template id="banger-template">
+            <div class="movie-card movie-card_banger" data-id="{{id}}">
+                <h2 class="nom" style="text-align: center;"></h2>
+                <img class="lienImage" src="" alt="Affiche du film">
+                <div class="content">
+                    <div class="movie-details">
+                        <p><strong>Année De Sortie:</strong> <span class="dateDeSortie"></span></p>
+                        <p><strong>Réalisateur :</strong> <span class="realisateur"></span></p>
+                        <p><strong>Note de la critique : </strong> <span class="note"></span></p>
+                        <p><strong>Note du public : </strong> <span class="notePublic"></span></p>
+                        <p><strong>Différence : </strong> <span class="noteDifference"></span></p>
+                        <p><strong>Compagnie :</strong> <span class="compagnie"></span></p>
+                        <p><strong>Description : </strong> <span class="description"></span></p>
+                    </div>
+                    <button class="delete-button" aria-label="Supprimer le film">Supprimer</button>
+                    <button class="edit-button" aria-label="Modifier le film">Modifier</button>
+                </div>
+            </div>
+        </template>
+
+        <!-- Template pour les navets -->
+        <template id="navets">
+            <div class="movie-card movie-card_navet_border" data-id="{{id}}">
+                <img class="lienImage" src="" alt="Affiche du film">
+                <div class="content">
+                    <h2 class="nom"></h2>
+                    <p><strong>Ne vaut même pas la peine </strong></p>
+                    <button class="delete-button" aria-label="Supprimer le film">Supprimer</button>
+                    <button class="edit-button" aria-label="Modifier le film">Modifier</button>
+                </div>
+            </div>
+        </template>
+    </main>
+</body>
+
+</html>

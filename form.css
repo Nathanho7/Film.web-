@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #0D1B2A;
+    --secondary-color: #1B263B;
+    --accent-color: #FFD700;
+    --background-color: #0A192F;
+    --text-color: #E0E1DD;
+    --input-background: #1B263B;
+    --input-border: #415A77;
+    --card-background: #112240;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 0;
+}
+
+main {
+    max-width: 700px;
+    width: 90%;
+    margin: 30px auto;
+    padding: 30px;
+    background: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+form#addFilmForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form#addFilmForm .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+form#addFilmForm label {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 6px;
+}
+
+form#addFilmForm input[type="text"],
+form#addFilmForm input[type="number"],
+form#addFilmForm textarea {
+    padding: 12px;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    background: var(--input-background);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form#addFilmForm textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+form#addFilmForm input[type="text"]:focus,
+form#addFilmForm input[type="number"]:focus,
+form#addFilmForm textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+form#addFilmForm input[type="submit"] {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+form#addFilmForm input[type="submit"]:hover {
+    background: #FFC300;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.5);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    margin-top: 30px;
+    width: 100%;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #FFC300;
+    text-decoration: underline;
+}
