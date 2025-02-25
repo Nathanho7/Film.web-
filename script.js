@@ -3,10 +3,10 @@ $(document).ready(function () {
     let isImportBangerActive = false;
     let isImportNavetActive = false;
 
-    // Vider le conteneur des films au démarrage
+
     $('#movies-container').empty();
 
-    // Fonction pour charger les films avec filtres
+
     function loadMovies() {
         const goodNote = parseFloat($('#goodNote').val());
         const badNote = parseFloat($('#badNote').val());
@@ -20,9 +20,9 @@ $(document).ready(function () {
             return;
         }
 
-        let url = 'http://localhost:3000/films?';
+        let url = 'http://localhost:80/films?';
         if (isImportBangerActive) {
-            url += `noteMin=4.2&`; // Récupérer uniquement les films avec une note >= 4.2
+            url += `noteMin=4.2&`;
         } else {
             if (origineFilm) url += `origine=${origineFilm}&`;
             if (niveau) url += `niveau=${niveau}&`;
@@ -47,15 +47,14 @@ $(document).ready(function () {
         });
     }
 
-    // Fonction pour afficher les films
     function displayMovies(movies) {
         const origineFilm = $('#FiltrePays').val();
 
-        $('#movies-container').empty(); // On vide le conteneur avant d'ajouter les nouveaux films
+        $('#movies-container').empty();
 
         const filteredMovies = movies.filter(movie => {
-            if (!origineFilm || origineFilm === "TOUS") return true; // Afficher tous les films si "Origine du film" ou "TOUS" est sélectionné
-            return movie.origine && movie.origine.trim() === origineFilm.trim(); // Filtrer par origine
+            if (!origineFilm || origineFilm === "TOUS") return true;
+            return movie.origine && movie.origine.trim() === origineFilm.trim();
         });
 
         filteredMovies.forEach(movie => {
@@ -78,7 +77,7 @@ $(document).ready(function () {
             const movieCardElement = instance.querySelector('.movie-card');
             if (movieCardElement) {
                 movieCardElement.className = movieCardClass;
-                movieCardElement.setAttribute('data-id', movie.id); // Ajoute l'ID du film à la carte
+                movieCardElement.setAttribute('data-id', movie.id);
             }
 
             const movieDetails = instance.querySelector('.movie-details');
@@ -136,36 +135,36 @@ $(document).ready(function () {
             if (editButton) {
                 editButton.addEventListener('click', function () {
                     const movieCard = $(this).closest('.movie-card');
-                    const movieId = movieCard.attr('data-id'); // Récupère l'ID du film
+                    const movieId = movieCard.attr('data-id');
 
-                    // Stocke l'ID dans la modale
+
                     $('#edit-film-modal').data('id', movieId);
 
-                    // Récupère les données actuelles du film
+
                     const movieData = {
                         nom: movieCard.find('.nom').text(),
-                        dateDeSortie: movieCard.find('.dateDeSortie').text(), // Doit être une année (ex: 1960)
+                        dateDeSortie: movieCard.find('.dateDeSortie').text(),
                         realisateur: movieCard.find('.realisateur').text(),
                         note: parseFloat(movieCard.find('.note').text().split('/')[0]),
                         notePublic: parseFloat(movieCard.find('.notePublic').text()),
                         compagnie: movieCard.find('.compagnie').text(),
                         description: movieCard.find('.description').text(),
                         origine: movieCard.find('.origine').text(),
-                        lienImage: movieCard.find('.lienImage').attr('src') // Récupère le chemin de l'image
+                        lienImage: movieCard.find('.lienImage').attr('src')
                     };
 
-                    // Remplit le formulaire avec les données actuelles
+
                     $('#edit-nom').val(movieData.nom);
-                    $('#edit-dateDeSortie').val(movieData.dateDeSortie); // Doit être une année (ex: 1960)
+                    $('#edit-dateDeSortie').val(movieData.dateDeSortie);
                     $('#edit-realisateur').val(movieData.realisateur);
                     $('#edit-note').val(movieData.note);
                     $('#edit-notePublic').val(movieData.notePublic);
                     $('#edit-compagnie').val(movieData.compagnie);
                     $('#edit-description').val(movieData.description);
                     $('#edit-origine').val(movieData.origine);
-                    $('#edit-lienImage').val(movieData.lienImage); // Remplit le champ du lien de l'image
+                    $('#edit-lienImage').val(movieData.lienImage);
 
-                    // Affiche la modale
+
                     $('#edit-film-modal').show();
                 });
             }
@@ -174,7 +173,7 @@ $(document).ready(function () {
         });
     }
 
-    // Fonction pour générer les étoiles en fonction de la note
+
     const getStars = (rating) => {
         if (rating === null || rating === undefined) {
             return "N/A";
@@ -187,20 +186,20 @@ $(document).ready(function () {
         return stars;
     };
 
-    // Fonction pour mettre à jour l'affichage des films
+
     function updateMovies() {
         displayMovies(moviesData);
     }
 
-    // Fonction
+
     function deleteMovie(movieId) {
         $.ajax({
-            url: `http://localhost:3000/films/${movieId}`,
+            url: `http://localhost:80/films/${movieId}`,
             type: 'DELETE',
             success: function (response) {
                 console.log("Film supprimé avec succès :", response);
                 alert("Film supprimé avec succès !");
-                loadMovies(); // Recharge la liste des films après la suppression
+                loadMovies();
             },
             error: function (xhr, status, error) {
                 console.error("Erreur lors de la suppression du film :", error);
@@ -209,16 +208,16 @@ $(document).ready(function () {
         });
     }
 
-    // Événement pour le bouton "Importer les classiques"
+
     $('#importBanger').on('click', function () {
         isImportBangerActive = !isImportBangerActive;
         $('#importNavets').removeClass('active');
         isImportNavetActive = false;
         $(this).toggleClass('active');
-        loadMovies(); // Appeler loadMovies pour charger les films
+        loadMovies();
     });
 
-    // Événement pour le bouton "Importer les navets"
+
     $('#importNavets').on('click', function () {
         isImportNavetActive = !isImportNavetActive;
         $('#importBanger').removeClass('active');
@@ -227,46 +226,46 @@ $(document).ready(function () {
         loadMovies();
     });
 
-    // Événement pour le bouton "Clear"
+
     $('#clearButton').on('click', function () {
         isImportBangerActive = false;
         isImportNavetActive = false;
         $('#importBanger').removeClass('active');
         $('#importNavets').removeClass('active');
-        $('#FiltrePays').val('').prop('selectedIndex', 0); // Réinitialise à "Origine du film"
-        $('#FiltreNiveau').val(''); // Réinitialise le filtre de niveau
-        $('#noteMin').val(''); // Réinitialise la note minimale
-        $('#noteMax').val(''); // Réinitialise la note maximale
-        $('#movies-container').empty(); // Efface les films affichés
+        $('#FiltrePays').val('').prop('selectedIndex', 0);
+        $('#FiltreNiveau').val('');
+        $('#noteMin').val('');
+        $('#noteMax').val('');
+        $('#movies-container').empty();
     });
 
-    // Événement pour le bouton "Voir Films"
+
     $('#loadMoviesButton').on('click', function () {
         loadMovies();
     });
 
-    // Événement pour le bouton "Appliquer les filtres"
+
     $('#appliquerFiltres').on('click', function () {
         loadMovies();
     });
 
-    // Événement pour fermer la modale
+
     $('.close').on('click', function () {
         $('#edit-film-modal').hide();
     });
 
-    // Événement pour enregistrer les modifications
+
     $('#edit-film-form').on('submit', function (e) {
         e.preventDefault();
 
-        // Récupère l'ID du film stocké dans la modale
-        const movieId = $('#edit-film-modal').data('id');
-        console.log("ID du film à modifier :", movieId); // Log pour vérifier l'ID
 
-        // Récupère les données du formulaire
+        const movieId = $('#edit-film-modal').data('id');
+        console.log("ID du film à modifier :", movieId);
+
+
         const updatedData = {
             nom: $('#edit-nom').val(),
-            dateDeSortie: $('#edit-dateDeSortie').val(), // Doit être une année (ex: 1960)
+            dateDeSortie: $('#edit-dateDeSortie').val(),
             realisateur: $('#edit-realisateur').val(),
             note: parseFloat($('#edit-note').val()),
             notePublic: parseFloat($('#edit-notePublic').val()),
@@ -275,28 +274,28 @@ $(document).ready(function () {
             origine: $('#edit-origine').val(),
         };
 
-        // Ajoute le lien de l'image uniquement si le champ n'est pas vide
+
         const lienImage = $('#edit-lienImage').val();
         if (lienImage) {
             updatedData.lienImage = lienImage;
         }
 
-        // Validation de l'année de sortie
+
         if (!/^\d{4}$/.test(updatedData.dateDeSortie)) {
             alert("Veuillez entrer une année valide (ex: 1960).");
             return;
         }
 
-        // Envoie les modifications au backend
+
         $.ajax({
-            url: `http://localhost:3000/films/${movieId}`,
+            url: `http://localhost:80/films/${movieId}`,
             type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(updatedData),
             success: function (response) {
                 alert('Film modifié avec succès !');
                 $('#edit-film-modal').hide();
-                loadMovies(); // Recharge la liste des films
+                loadMovies();
             },
             error: function (xhr, status, error) {
                 console.error("Erreur lors de la modification du film :", error);
