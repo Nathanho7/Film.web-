@@ -3,9 +3,7 @@ $(document).ready(function () {
     let isImportBangerActive = false;
     let isImportNavetActive = false;
 
-
     $('#movies-container').empty();
-
 
     function loadMovies() {
         const goodNote = parseFloat($('#goodNote').val());
@@ -20,7 +18,7 @@ $(document).ready(function () {
             return;
         }
 
-        let url = 'http://localhost:80/films?';
+        let url = 'http://localhost:80/api/films?';  // Ajusté pour utiliser /api/films au lieu de /films
         if (isImportBangerActive) {
             url += `noteMin=4.2&`;
         } else {
@@ -42,7 +40,7 @@ $(document).ready(function () {
             },
             error: function (xhr, status, error) {
                 console.error("Erreur lors du chargement des films :", error);
-                alert("Erreur lors du chargement des films.");
+                alert("Erreur lors du chargement des films. Vérifie l'URL du back-end ou le serveur.");
             }
         });
     }
@@ -137,22 +135,19 @@ $(document).ready(function () {
                     const movieCard = $(this).closest('.movie-card');
                     const movieId = movieCard.attr('data-id');
 
-
                     $('#edit-film-modal').data('id', movieId);
-
 
                     const movieData = {
                         nom: movieCard.find('.nom').text(),
                         dateDeSortie: movieCard.find('.dateDeSortie').text(),
                         realisateur: movieCard.find('.realisateur').text(),
-                        note: parseFloat(movieCard.find('.note').text().split('/')[0]),
-                        notePublic: parseFloat(movieCard.find('.notePublic').text()),
+                        note: parseFloat(movieCard.find('.note').text().split('/')[0] || 0),
+                        notePublic: parseFloat(movieCard.find('.notePublic').text() || 0),
                         compagnie: movieCard.find('.compagnie').text(),
-                        description: movieCard.find('.description').text(),
+                        description: movieCard.find('.description').text().replace("Description: ", ""),
                         origine: movieCard.find('.origine').text(),
                         lienImage: movieCard.find('.lienImage').attr('src')
                     };
-
 
                     $('#edit-nom').val(movieData.nom);
                     $('#edit-dateDeSortie').val(movieData.dateDeSortie);
@@ -164,7 +159,6 @@ $(document).ready(function () {
                     $('#edit-origine').val(movieData.origine);
                     $('#edit-lienImage').val(movieData.lienImage);
 
-
                     $('#edit-film-modal').show();
                 });
             }
@@ -173,9 +167,8 @@ $(document).ready(function () {
         });
     }
 
-
     const getStars = (rating) => {
-        if (rating === null || rating === undefined) {
+        if (rating === null || rating === undefined || isNaN(rating)) {
             return "N/A";
         }
         const starCount = Math.floor(rating);
@@ -186,15 +179,13 @@ $(document).ready(function () {
         return stars;
     };
 
-
     function updateMovies() {
         displayMovies(moviesData);
     }
 
-
     function deleteMovie(movieId) {
         $.ajax({
-            url: `http://localhost:80/films/${movieId}`,
+            url: `http://localhost:80/api/films/${movieId}`,  // Ajusté pour utiliser /api/films
             type: 'DELETE',
             success: function (response) {
                 console.log("Film supprimé avec succès :", response);
@@ -208,7 +199,6 @@ $(document).ready(function () {
         });
     }
 
-
     $('#importBanger').on('click', function () {
         isImportBangerActive = !isImportBangerActive;
         $('#importNavets').removeClass('active');
@@ -217,7 +207,6 @@ $(document).ready(function () {
         loadMovies();
     });
 
-
     $('#importNavets').on('click', function () {
         isImportNavetActive = !isImportNavetActive;
         $('#importBanger').removeClass('active');
@@ -225,7 +214,6 @@ $(document).ready(function () {
         $(this).toggleClass('active');
         loadMovies();
     });
-
 
     $('#clearButton').on('click', function () {
         isImportBangerActive = false;
@@ -239,29 +227,23 @@ $(document).ready(function () {
         $('#movies-container').empty();
     });
 
-
     $('#loadMoviesButton').on('click', function () {
         loadMovies();
     });
-
 
     $('#appliquerFiltres').on('click', function () {
         loadMovies();
     });
 
-
     $('.close').on('click', function () {
         $('#edit-film-modal').hide();
     });
 
-
     $('#edit-film-form').on('submit', function (e) {
         e.preventDefault();
 
-
         const movieId = $('#edit-film-modal').data('id');
         console.log("ID du film à modifier :", movieId);
-
 
         const updatedData = {
             nom: $('#edit-nom').val(),
@@ -274,21 +256,18 @@ $(document).ready(function () {
             origine: $('#edit-origine').val(),
         };
 
-
         const lienImage = $('#edit-lienImage').val();
         if (lienImage) {
             updatedData.lienImage = lienImage;
         }
-
 
         if (!/^\d{4}$/.test(updatedData.dateDeSortie)) {
             alert("Veuillez entrer une année valide (ex: 1960).");
             return;
         }
 
-
         $.ajax({
-            url: `http://localhost:80/films/${movieId}`,
+            url: `http://localhost:80/api/films/${movieId}`,  // Ajusté pour utiliser /api/films
             type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(updatedData),
