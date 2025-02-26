@@ -1,267 +1,789 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+/* Ajout d’une police élégante pour un effet majestueux */
 
 :root {
     --primary-color: #240b42;
+    /* Violet profond, royal */
     --secondary-color: #263238;
+    /* Gris sombre, sophistiqué */
     --accent-color: #b08111;
-    --background-color: #e9eef3;
-    --card-background: #ffffff;
-    --text-color: #212121;
-    --light-text-color: #616161;
+    /* Or luxueux, comme un tapis rouge */
+    --background-color: #0d0d0d;
+    /* Noir profond pour un effet théâtre sombre */
+    --card-background: #1a1a1a;
+    /* Gris anthracite luxueux pour les cartes */
+    --text-color: #ffffff;
+    /* Texte blanc éclatant */
+    --light-text-color: #a0a0a0;
+    /* Texte gris clair, subtil */
+    --error-color: #b71c1c;
+    /* Rouge dramatique pour les erreurs */
+    --success-color: #2e7d32;
+    /* Vert émeraude pour les succès */
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    /* Ombre profonde pour un effet 3D */
+    --glow-color: rgba(176, 129, 17, 0.7);
+    /* Halo doré pour les accents */
+    --transition-duration: 0.6s;
+    /* Durée des transitions pour un effet fluide */
 }
 
+/* Base du body avec un effet cinéma immersif */
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
     color: var(--text-color);
-    line-height: 1.7;
+    line-height: 1.8;
     background-image: url('img/cineplus.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-blend-mode: overlay;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Fond noir intense pour un effet théâtre */
+    overflow-x: hidden;
+    /* Empêche le défilement horizontal */
 }
 
+/* Animation globale pour un effet d’entrée majestueux */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sections principales avec une opulence cinématographique */
 header,
 main,
 footer {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(36, 11, 66, 0.9));
+    /* Dégradé violet/noir */
+    padding: 40px 30px;
+    border-radius: 25px;
+    margin: 30px auto;
+    max-width: 1400px;
+    box-shadow: 0 15px 50px var(--shadow-color), 0 0 20px var(--glow-color);
+    /* Ombre et halo doré */
+    position: relative;
+    animation: fadeInUp 1.2s ease-out;
+    border: 2px solid var(--accent-color);
+    /* Bordure dorée luxueuse */
+    transition: box-shadow var(--transition-duration), transform 0.3s ease;
 }
 
+/* Header majestueux avec effet 3D */
 header {
-    background-color: var(--primary-color);
-    color: rgb(239, 233, 233);
-    padding: 40px 0;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(180deg, var(--primary-color), rgba(36, 11, 66, 0.8));
+    color: var(--text-color);
+    padding: 60px 0;
+    margin-bottom: 60px;
+    box-shadow: 0 20px 60px var(--shadow-color), 0 0 30px var(--glow-color);
 }
 
 header h1 {
-    font-size: 3.5em;
+    font-family: 'Cinzel', serif;
+    /* Police élégante pour un titre majestueux */
+    font-size: 4.5em;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 0.7), 0 0 15px var(--glow-color);
+    /* Ombre et halo doré */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    /* Majuscules pour un effet théâtral */
+    transition: text-shadow var(--transition-duration), transform 0.3s ease;
 }
 
+/* Effet de vague au bas du header avec animation */
 header::before {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     left: 0;
     width: 100%;
-    height: 80px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,56.5c0,0,298.6,0,400,0s300.5,73.5,600.5,73.5s400-56.5,400-56.5V0H0Z" fill="white"/></svg>') repeat-x bottom;
-    opacity: 0.3;
+    height: 100px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,56.5c0,0,298.6,0,400,0s300.5,73.5,600.5,73.5s400-56.5,400-56.5V0H0Z" fill="var(--accent-color)"/></svg>') repeat-x bottom;
+    opacity: 0.5;
+    animation: wave 4s infinite ease-in-out;
 }
 
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Boutons luxueux et dynamiques */
 .buttonsChoice {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     flex-wrap: wrap;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    animation: fadeInUp 1.5s ease-out 0.5s backwards;
 }
 
 button,
 a button {
-    font-size: 1.2em;
-    padding: 15px 35px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3em;
+    padding: 18px 45px;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    min-width: 160px;
+    transition: background-color var(--transition-duration), color var(--transition-duration), transform 0.4s ease, box-shadow 0.4s ease;
+    min-width: 180px;
     white-space: nowrap;
     text-decoration: none;
-    color: inherit;
-    background-color: var(--accent-color);
-    color: var(--secondary-color);
+    color: var(--text-color);
+    background: linear-gradient(45deg, var(--accent-color), darken(var(--accent-color), 10%));
     font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 20px var(--glow-color);
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity var(--transition-duration);
 }
 
 button:hover,
 a button:hover {
-    transform: translateY(-5px);
-    background-color: darken(var(--accent-color), 10%);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px var(--shadow-color), 0 0 30px var(--glow-color);
+    background: linear-gradient(45deg, darken(var(--accent-color), 15%), var(--accent-color));
+}
+
+button:hover::after,
+a button:hover::after {
+    opacity: 1;
 }
 
 button:focus,
 a button:focus {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.4);
+    box-shadow: 0 0 0 6px rgba(var(--primary-color-rgb), 0.4), 0 0 20px var(--glow-color);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px var(--shadow-color);
 }
 
 .buttonsChoice button.active {
-    background-color: darken(var(--accent-color), 20%);
+    background: linear-gradient(45deg, darken(var(--accent-color), 25%), var(--accent-color));
     color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-color), 0 0 30px var(--glow-color);
 }
 
+/* Inputs et selects avec un design luxueux et dynamique */
 input[type="range"],
-select {
-    margin: 20px 0;
-    padding: 12px;
-    border-radius: 30px;
-    border: none;
-    background-color: white;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    font-size: 1.1em;
-}
-
-input[type="range"] {
-    width: 350px;
-}
-
-select {
-    width: 370px;
-}
-
-select#FiltrePays {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background-color: white;
+select,
+input[type="number"],
+input[type="text"] {
+    margin: 25px 0;
+    padding: 15px;
+    border-radius: 40px;
+    border: 2px solid var(--accent-color);
+    /* Bordure dorée lumineuse */
+    background: var(--primary-color);
+    /* Fond violet foncé */
+    box-shadow: 0 5px 15px var(--shadow-color), 0 0 15px var(--glow-color);
+    /* Ombre et halo doré */
+    width: 400px;
+    font-size: 1.2em;
+    font-family: 'Poppins', sans-serif;
     color: var(--text-color);
+    /* Texte blanc pour visibilité */
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='currentColor'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 18px;
-    padding-right: 35px;
+    cursor: pointer;
+    transition: box-shadow var(--transition-duration), transform 0.3s ease, border-color 0.3s ease;
+    outline: none;
 }
 
-select#FiltrePays option:first-child {
-    color: red;
+input[type="range"]:hover,
+select:hover,
+input[type="number"]:hover,
+input[type="text"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--shadow-color), 0 0 20px var(--glow-color);
 }
 
-select#FiltrePays::-ms-expand {
-    display: none;
+/* Sliders personnalisés (Excellents et Navets) */
+input[type="range"] {
+    height: 20px;
 }
 
-select#FiltrePays option[value="France"],
-select#FiltrePays option[value="Angleterre"],
-select#FiltrePays option[value="Belgique"],
+/* Barre de progression des sliders */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+    /* Dégradé or-violet visible */
+    border-radius: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: background var(--transition-duration);
+}
+
+input[type="range"]::-moz-range-track {
+    height: 10px;
+    background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+    border-radius: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: background var(--transition-duration);
+}
+
+input[type="range"]::-ms-track {
+    height: 10px;
+    background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+    border-radius: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    color: transparent;
+    /* Supprimer le texte par défaut dans IE/Edge */
+    transition: background var(--transition-duration);
+}
+
+/* Curseur des sliders (bleu clair visible) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #2196f3;
+    /* Bleu clair pour visibilité */
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    /* Bordure dorée */
+    box-shadow: 0 2px 5px var(--shadow-color), 0 0 10px rgba(33, 150, 243, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px var(--shadow-color), 0 0 15px rgba(33, 150, 243, 0.7);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #2196f3;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 2px 5px var(--shadow-color), 0 0 10px rgba(33, 150, 243, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px var(--shadow-color), 0 0 15px rgba(33, 150, 243, 0.7);
+}
+
+input[type="range"]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #2196f3;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 2px 5px var(--shadow-color), 0 0 10px rgba(33, 150, 243, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="range"]::-ms-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px var(--shadow-color), 0 0 15px rgba(33, 150, 243, 0.7);
+}
+
+/* Étiquettes pour les sliders (Excellents et Navets, si gérées par HTML) */
+label[for="goodNote"],
+label[for="badNote"] {
+    font-size: 1.3em;
+    color: var(--text-color);
+    /* Texte blanc pour visibilité */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    /* Ombre légère pour lisibilité */
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Étiquettes spécifiques pour "Excellents" et "Navets" */
+label[for="goodNote"]::after {
+    content: " Excellents";
+    color: var(--accent-color);
+    /* Or luxueux pour "Excellents" */
+    text-shadow: 0 1px 5px rgba(176, 129, 17, 0.5);
+    /* Halo doré */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+label[for="goodNote"]:hover::after {
+    color: darken(var(--accent-color), 10%);
+    text-shadow: 0 2px 8px rgba(176, 129, 17, 0.7);
+}
+
+label[for="badNote"]::after {
+    content: " Navets";
+    color: var(--error-color);
+    /* Rouge dramatique pour "Navets" */
+    text-shadow: 0 1px 5px rgba(183, 28, 28, 0.5);
+    /* Halo rouge */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+label[for="badNote"]:hover::after {
+    color: darken(var(--error-color), 10%);
+    text-shadow: 0 2px 8px rgba(183, 28, 28, 0.7);
+}
+
+/* Style spécifique pour #FiltreNiveau */
+select#FiltreNiveau {
+    background: linear-gradient(135deg, var(--primary-color), rgba(38, 50, 56, 0.8));
+    /* Dégradé noir/gris pour un effet riche */
+    border-radius: 50px;
+    /* Bordures plus rondes pour un look moderne */
+    box-shadow: 0 8px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+    /* Ombre plus prononcée */
+    padding: 18px 45px 18px 20px;
+    /* Plus d’espace pour un look luxueux */
+    font-weight: 600;
+    /* Texte bold pour un effet majestueux */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    /* Ombre textuelle légère */
+    transition: box-shadow var(--transition-duration), transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Options du menu déroulant pour #FiltreNiveau */
+select#FiltreNiveau option {
+    background: var(--primary-color);
+    /* Fond noir pour les options */
+    color: var(--text-color);
+    /* Texte blanc par défaut */
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ligne subtile entre options */
+    transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Style pour l’option par défaut "Tous" de FiltreNiveau */
+select#FiltreNiveau option[value=""] {
+    color: var(--light-text-color);
+    /* Gris clair pour "Tous", moins voyant */
+    font-style: italic;
+    transition: color var(--transition-duration);
+}
+
+/* Styles pour les options spécifiques de FiltreNiveau */
+select#FiltreNiveau option[value="Classic"] {
+    color: var(--accent-color);
+    /* Or luxueux pour "Classic" */
+    text-shadow: 0 1px 5px rgba(176, 129, 17, 0.5);
+    /* Halo doré */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+select#FiltreNiveau option[value="Standard"] {
+    color: var(--text-color);
+    /* Blanc pour "Standard", neutre */
+    transition: color var(--transition-duration);
+}
+
+select#FiltreNiveau option[value="Navet"] {
+    color: var(--error-color);
+    /* Rouge dramatique pour "Navet" */
+    text-shadow: 0 1px 5px rgba(183, 28, 28, 0.5);
+    /* Halo rouge */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+/* Effet hover sur les options de FiltreNiveau */
+select#FiltreNiveau option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    /* Fond légèrement clair au hover */
+    color: var(--text-color);
+    /* Texte blanc pour contraste */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Effet au focus et hover pour FiltreNiveau */
+select#FiltreNiveau:hover,
+select#FiltreNiveau:focus {
+    outline: none;
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 25px var(--glow-color);
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+}
+
+/* Animation au changement de sélection pour FiltreNiveau */
+select#FiltreNiveau {
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 5px 15px var(--shadow-color), 0 0 15px var(--glow-color);
+    }
+
+    to {
+        box-shadow: 0 10px 25px var(--shadow-color), 0 0 25px var(--glow-color);
+    }
+}
+
+/* Style spécifique pour #FiltrePays */
+select#FiltrePays {
+    background: linear-gradient(135deg, var(--primary-color), rgba(38, 50, 56, 0.8));
+    /* Dégradé noir/gris pour un effet riche */
+    border-radius: 50px;
+    /* Bordures plus rondes pour un look moderne */
+    box-shadow: 0 8px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+    /* Ombre plus prononcée */
+    padding: 18px 45px 18px 20px;
+    /* Plus d’espace pour un look luxueux */
+    font-weight: 600;
+    /* Texte bold pour un effet majestueux */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    /* Ombre textuelle légère */
+    transition: box-shadow var(--transition-duration), transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Options du menu déroulant pour #FiltrePays */
+select#FiltrePays option {
+    background: var(--primary-color);
+    /* Fond noir pour les options */
+    color: var(--text-color);
+    /* Texte blanc par défaut */
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Ligne subtile entre options */
+    transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Style pour l’option par défaut "Origine du film" */
+select#FiltrePays option[value=""] {
+    color: var(--light-text-color);
+    /* Gris clair pour l’instruction */
+    font-style: italic;
+    text-shadow: none;
+    transition: color var(--transition-duration);
+}
+
+/* Styles pour les options spécifiques par pays */
+select#FiltrePays option[value="France"] {
+    color: var(--accent-color);
+    /* Or luxueux pour la France */
+    text-shadow: 0 1px 5px rgba(176, 129, 17, 0.5);
+    /* Halo doré */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+select#FiltrePays option[value="États-Unis"] {
+    color: #c0c0c0;
+    /* Argent brillant pour les États-Unis */
+    text-shadow: 0 1px 5px rgba(192, 192, 192, 0.5);
+    /* Halo argenté */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+select#FiltrePays option[value="Belgique"] {
+    color: #2e7d32;
+    /* Émeraude pour la Belgique */
+    text-shadow: 0 1px 5px rgba(46, 125, 50, 0.5);
+    /* Halo vert */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
 select#FiltrePays option[value="Pays-Bas"] {
-    color: #007bff;
+    color: #1976d2;
+    /* Bleu saphir pour les Pays-Bas */
+    text-shadow: 0 1px 5px rgba(25, 118, 210, 0.5);
+    /* Halo bleu */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
 }
 
+select#FiltrePays option[value="TOUS"] {
+    color: #6a1b9a;
+    /* Violet clair pour TOUS, majestueux */
+    text-shadow: 0 1px 5px rgba(106, 27, 154, 0.5);
+    /* Halo violet */
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+/* Effet hover sur les options de FiltrePays */
+select#FiltrePays option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    /* Fond légèrement clair au hover */
+    color: var(--text-color);
+    /* Texte blanc pour contraste */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Effet au focus et hover pour FiltrePays */
+select#FiltrePays:hover,
+select#FiltrePays:focus {
+    outline: none;
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 25px var(--glow-color);
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+}
+
+/* Animation au changement de sélection pour FiltrePays */
+select#FiltrePays {
+    animation: glow 2s infinite alternate;
+}
+
+/* Grille de films avec un effet de galerie cinématographique */
 .movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    padding: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+    padding: 50px 40px;
+    animation: fadeInUp 1.8s ease-out 0.8s backwards;
 }
 
+/* Cartes de films somptueuses avec effet dynamique */
 .movie-card {
-    background-color: var(--card-background);
-    border-radius: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, var(--card-background), rgba(36, 11, 66, 0.1));
+    border-radius: 25px;
+    box-shadow: 0 20px 60px var(--shadow-color), 0 0 25px var(--glow-color);
     overflow: hidden;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
+    transition: transform var(--transition-duration), box-shadow var(--transition-duration), background 0.5s ease;
+    border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+    position: relative;
+    animation: fadeInUp 1s ease-out;
+}
+
+.movie-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-duration);
 }
 
 .movie-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-15px);
+    box-shadow: 0 30px 80px var(--shadow-color), 0 0 40px var(--glow-color);
+    background: linear-gradient(135deg, var(--card-background), rgba(36, 11, 66, 0.2));
+}
+
+.movie-card:hover::before {
+    opacity: 1;
 }
 
 .movie-card img {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
     aspect-ratio: 2 / 3;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid var(--accent-color);
+    transition: opacity var(--transition-duration), transform 0.4s ease;
+}
+
+.movie-card:hover img {
+    opacity: 0.9;
+    transform: scale(1.05);
 }
 
 .movie-card .content {
-    padding: 30px;
+    padding: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: background var(--transition-duration);
 }
 
 .movie-card h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: var(--primary-color);
+    font-family: 'Cinzel', serif;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    transition: color var(--transition-duration), text-shadow var(--transition-duration), transform 0.3s ease;
+}
+
+.movie-card:hover h2 {
+    transform: translateY(-2px);
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 }
 
 .movie-card p {
-    font-size: 1.15em;
+    font-size: 1.2em;
     color: var(--light-text-color);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+.movie-card:hover p {
+    color: var(--text-color);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .movie-card strong {
     font-weight: 600;
-    color: var(--secondary-color);
+    color: var(--text-color);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
 }
 
-.movie-card .rating {
-    font-weight: 600;
+.movie-card:hover strong {
     color: var(--accent-color);
+    text-shadow: 0 2px 6px rgba(176, 129, 17, 0.5);
 }
 
+/* Étoiles dorées pour les notes avec animation */
 .star {
-    color: gold;
-    font-size: 1.2em;
+    color: var(--accent-color);
+    font-size: 1.3em;
+    text-shadow: 0 1px 5px rgba(176, 129, 17, 0.8);
+    animation: twinkle 1.5s infinite alternate;
 }
 
-.delete-button {
-    background-color: #b71c1c;
+@keyframes twinkle {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Boutons de suppression et modification avec effet dynamique */
+.delete-button,
+.edit-button {
+    background: linear-gradient(45deg, var(--error-color), darken(var(--error-color), 10%));
     color: white;
-    padding: 14px 30px;
+    padding: 16px 40px;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    font-size: 1.1em;
+    transition: background-color var(--transition-duration), color var(--transition-duration), transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 8px 20px var(--shadow-color), 0 0 15px var(--glow-color);
+    font-size: 1.2em;
+    margin: 10px 5px;
+    display: inline-block;
+    animation: fadeInUp 1s ease-out 0.5s backwards;
+}
+
+.edit-button {
+    background: linear-gradient(45deg, var(--success-color), darken(var(--success-color), 10%));
 }
 
 .delete-button:hover {
-    background-color: darken(#b71c1c, 15%);
-    transform: translateY(-3px);
-    color: white;
+    background: linear-gradient(45deg, darken(var(--error-color), 15%), var(--error-color));
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px var(--shadow-color), 0 0 25px var(--glow-color);
 }
 
-.delete-button:active {
-    background-color: #b71c1c;
-    color: white;
+.edit-button:hover {
+    background: linear-gradient(45deg, darken(var(--success-color), 15%), var(--success-color));
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px var(--shadow-color), 0 0 25px var(--glow-color);
 }
 
+.delete-button:active,
+.edit-button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Cartes spéciales pour les classiques et navets */
 .movie-card_banger {
-    border: 3px solid gold;
-    background-color: #fff8e1;
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 25px 70px rgba(176, 129, 17, 0.4), 0 0 30px var(--glow-color);
+    background: linear-gradient(135deg, #fff8e1, rgba(255, 215, 0, 0.1));
+    transition: box-shadow var(--transition-duration), transform var(--transition-duration);
 }
 
 .movie-card_banger h2 {
-    color: #ff9800;
+    color: var(--accent-color);
+    text-shadow: 0 5px 15px rgba(176, 129, 17, 0.6);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
 }
 
 .movie-card_banger .movie-details {
-    background-color: #fff3e0;
+    background: rgba(255, 248, 225, 0.3);
+    border-top: 2px solid var(--accent-color);
+    transition: background var(--transition-duration);
 }
 
 .movie-card_navet_border {
-    border: 5px solid purple;
+    border: 5px solid var(--error-color);
+    box-shadow: 0 20px 60px rgba(183, 28, 28, 0.3), 0 0 20px rgba(183, 28, 28, 0.5);
+    background: linear-gradient(135deg, #f8e1e1, rgba(255, 205, 210, 0.1));
+    transition: box-shadow var(--transition-duration), transform var(--transition-duration);
 }
 
+.movie-card_navet_border h2 {
+    color: var(--error-color);
+    text-shadow: 0 3px 8px rgba(183, 28, 28, 0.4);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+.movie-card_navet_border .movie-details {
+    background: rgba(248, 225, 225, 0.3);
+    border-top: 2px solid var(--error-color);
+    transition: background var(--transition-duration);
+}
+
+/* Formulaire d’ajout de film avec un design luxueux et dynamique */
 form#addFilmForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
+    gap: 40px;
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px var(--shadow-color), 0 0 20px var(--glow-color);
+    animation: fadeInUp 1.5s ease-out 0.7s backwards;
+    transition: box-shadow var(--transition-duration), transform 0.3s ease;
+}
+
+form#addFilmForm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px var(--shadow-color), 0 0 25px var(--glow-color);
 }
 
 form#addFilmForm div {
@@ -269,60 +791,104 @@ form#addFilmForm div {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    max-width: 600px;
+    transition: opacity 0.3s ease;
 }
 
 form#addFilmForm label {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1.3em;
+    margin-bottom: 15px;
     font-weight: 600;
-    color: var(--secondary-color);
+    color: var(--text-color);
     text-align: left;
-    width: 100%;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+form#addFilmForm:hover label {
+    color: var(--accent-color);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 form#addFilmForm input,
 form#addFilmForm textarea {
-    padding: 15px;
-    border: none;
-    border-radius: 30px;
-    background-color: white;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    padding: 18px;
+    border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+    border-radius: 40px;
+    background: linear-gradient(135deg, var(--card-background), rgba(255, 255, 255, 0.95));
+    box-shadow: 0 5px 15px var(--shadow-color);
     width: 100%;
     box-sizing: border-box;
     font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    transition: box-shadow var(--transition-duration), transform 0.3s ease, border-color 0.3s ease;
+}
+
+form#addFilmForm input:hover,
+form#addFilmForm textarea:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+    border-color: var(--accent-color);
+}
+
+form#addFilmForm input:focus,
+form#addFilmForm textarea:focus {
+    outline: none;
+    box-shadow: 0 10px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
 }
 
 form#addFilmForm textarea {
-    height: 180px;
+    height: 200px;
+    resize: vertical;
 }
 
 form#addFilmForm input[type="submit"] {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px 35px;
+    background: linear-gradient(45deg, var(--primary-color), darken(var(--primary-color), 10%));
+    color: var(--text-color);
+    padding: 20px 50px;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    font-size: 1.2em;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color var(--transition-duration), transform 0.4s ease, box-shadow 0.4s ease;
+    font-size: 1.3em;
+    font-weight: 700;
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 25px var(--glow-color);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.8s backwards;
 }
 
 form#addFilmForm input[type="submit"]:hover {
-    transform: translateY(-5px);
-    background-color: darken(var(--primary-color), 15%);
+    transform: translateY(-8px);
+    background: linear-gradient(45deg, darken(var(--primary-color), 15%), var(--primary-color));
+    box-shadow: 0 15px 40px var(--shadow-color), 0 0 35px var(--glow-color);
 }
 
+form#addFilmForm input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Footer avec effet dramatique */
 footer {
     text-align: center;
-    padding: 40px;
-    background-color: var(--secondary-color);
-    color: white;
-    margin-top: 50px;
+    padding: 50px;
+    background: linear-gradient(180deg, var(--secondary-color), rgba(38, 50, 56, 0.8));
+    color: var(--text-color);
+    margin-top: 70px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 15px var(--glow-color);
+    animation: fadeInUp 1.8s ease-out 1s backwards;
+    transition: box-shadow var(--transition-duration), transform 0.3s ease;
 }
 
+footer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-color), 0 0 20px var(--glow-color);
+}
+
+/* Modal somptueux avec effet dynamique */
 .modal {
     display: none;
     position: fixed;
@@ -331,100 +897,260 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Fond noir intense pour un effet rideau */
     overflow: auto;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-content {
-    background-color: var(--card-background);
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, var(--card-background), rgba(26, 26, 26, 0.9));
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: 30px;
     width: 90%;
-    max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    box-shadow: 0 20px 80px var(--shadow-color), 0 0 40px var(--glow-color);
     position: relative;
+    border: 3px solid var(--accent-color);
+    animation: slideIn 1.2s ease-out;
+    transition: box-shadow var(--transition-duration), transform 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 90px var(--shadow-color), 0 0 50px var(--glow-color);
 }
 
 .close {
     color: var(--light-text-color);
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 700;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color var(--transition-duration), transform 0.3s ease;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .close:hover {
     color: var(--text-color);
+    transform: scale(1.1);
+}
+
+.close:active {
+    transform: scale(0.95);
 }
 
 .modal h2 {
-    font-size: 2em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 25px;
     text-align: center;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration), transform 0.3s ease;
+}
+
+.modal:hover h2 {
+    transform: translateY(-2px);
+    text-shadow: 0 7px 20px rgba(0, 0, 0, 0.6);
 }
 
 #edit-film-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+    animation: fadeInUp 1.2s ease-out 0.5s backwards;
 }
 
 #edit-film-form label {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 600;
-    color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: left;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: color var(--transition-duration), text-shadow var(--transition-duration);
+}
+
+#edit-film-form:hover label {
+    color: var(--accent-color);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 #edit-film-form input,
 #edit-film-form textarea,
 #edit-film-form select {
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    padding: 18px;
+    border: 2px solid rgba(var(--accent-color-rgb), 0.3);
+    border-radius: 40px;
+    background: linear-gradient(135deg, var(--card-background), rgba(255, 255, 255, 0.95));
+    box-shadow: 0 5px 15px var(--shadow-color);
     width: 100%;
-    font-size: 1em;
+    font-size: 1.1em;
+    font-family: 'Poppins', sans-serif;
     color: var(--text-color);
+    transition: box-shadow var(--transition-duration), transform 0.3s ease, border-color 0.3s ease;
+}
+
+#edit-film-form input:hover,
+#edit-film-form textarea:hover,
+#edit-film-form select:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+    border-color: var(--accent-color);
+}
+
+#edit-film-form input:focus,
+#edit-film-form textarea:focus,
+#edit-film-form select:focus {
+    outline: none;
+    box-shadow: 0 10px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
 }
 
 #edit-film-form textarea {
-    height: 120px;
+    height: 150px;
     resize: vertical;
 }
 
 #edit-film-form select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z' fill='currentColor'/%3E%3C/svg%3E");
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b08111'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 18px;
-    padding-right: 35px;
+    background-position: right 15px center;
+    background-size: 20px;
+    padding-right: 50px;
+    cursor: pointer;
+    transition: box-shadow var(--transition-duration), transform 0.3s ease;
 }
 
 #edit-film-form button[type="submit"] {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px 30px;
+    background: linear-gradient(45deg, var(--primary-color), darken(var(--primary-color), 10%));
+    color: var(--text-color);
+    padding: 20px 50px;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
     cursor: pointer;
-    font-size: 1.1em;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: 700;
+    transition: background-color var(--transition-duration), transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 25px var(--glow-color);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.9s backwards;
 }
 
 #edit-film-form button[type="submit"]:hover {
-    background-color: darken(var(--primary-color), 10%);
-    transform: translateY(-3px);
+    transform: translateY(-8px);
+    background: linear-gradient(45deg, darken(var(--primary-color), 15%), var(--primary-color));
+    box-shadow: 0 15px 40px var(--shadow-color), 0 0 35px var(--glow-color);
 }
 
 #edit-film-form button[type="submit"]:active {
-    background-color: var(--primary-color);
     transform: translateY(0);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Responsivité pour un affichage majestueux sur tous les écrans */
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 3.5em;
+    }
+
+    .movies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px;
+    }
+
+    .movie-card {
+        border-radius: 20px;
+    }
+
+    button,
+    a button {
+        padding: 15px 35px;
+        font-size: 1.1em;
+        min-width: 150px;
+    }
+
+    input[type="range"],
+    select {
+        width: 300px;
+    }
+
+    form#addFilmForm {
+        padding: 30px;
+        max-width: 500px;
+    }
+
+    form#addFilmForm input,
+    form#addFilmForm textarea {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.8em;
+    }
+
+    .buttonsChoice {
+        gap: 20px;
+    }
+
+    button,
+    a button {
+        padding: 12px 25px;
+        font-size: 1em;
+        min-width: 140px;
+    }
+
+    input[type="range"],
+    select {
+        width: 250px;
+    }
+
+    .movies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .movie-card {
+        border-radius: 15px;
+    }
+
+    form#addFilmForm {
+        padding: 20px;
+        max-width: 400px;
+    }
+
+    form#addFilmForm input,
+    form#addFilmForm textarea {
+        padding: 12px;
+    }
 }
